@@ -5,6 +5,8 @@ package manejoArchivos;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.io.PrintWriter;
 
 public class ManejoArchivos {
@@ -35,7 +37,22 @@ public class ManejoArchivos {
             PrintWriter salida = new PrintWriter(archivo);
             salida.println(contenido);
             salida.close();
+            System.out.println("Se ha escrito el contenido en el archivo");
         } catch (FileNotFoundException e) {
+            e.printStackTrace(System.out);
+        }
+    }
+        public static void agregarArchivo(String nombreArchivo, String contenido){
+        //Declaramos obj tipo File
+        File archivo = new File(nombreArchivo);
+        try {//filewriter para anexar info y no sobreecribir
+            PrintWriter salida = new PrintWriter(new FileWriter(nombreArchivo, true));//true xa que anaxe info
+            salida.println(contenido);//agregar contenido
+            salida.close();
+            System.out.println("Se ha agregado el contenido en el archivo");
+        } catch (FileNotFoundException e) { 
+            e.printStackTrace(System.out);
+        }catch(IOException e){ // escepciones de lectura/escritura
             e.printStackTrace(System.out);
         }
     }
