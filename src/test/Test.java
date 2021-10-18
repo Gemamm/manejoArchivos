@@ -12,5 +12,9 @@ public class Test {
         //escribirArchivo(nombreArchivo, contenido1);
         agregarArchivo(nombreArchivo, contenido1);
         agregarArchivo(nombreArchivo, "Empresa");
+        agregarArchivo(nombreArchivo, "Ingles");
+        agregarArchivo(nombreArchivo, "RRHH");
+        
+        leerArchivo(nombreArchivo);
     }
 }

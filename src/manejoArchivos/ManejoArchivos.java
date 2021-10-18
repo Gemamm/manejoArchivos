@@ -3,8 +3,10 @@ package manejoArchivos;
 
 //crear archivo, guardar info, eleminar info y elminiar archivo.
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -56,4 +58,27 @@ public class ManejoArchivos {
             e.printStackTrace(System.out);
         }
     }
+        public static void leerArchivo(String nombreArchivo){
+            var archivo = new File(nombreArchivo);
+            try {
+                //bufered reader solo lee una linea
+                //filereader lee varias lineas
+                //la convinacion de sistemas para leer todo
+                
+                //descriptor de tipo lectura
+                var entrada  = new BufferedReader(new FileReader(archivo));
+                var lectura = entrada.readLine(); //leer la linea
+                while (lectura != null){ //para recorrer las lienas mientras haya
+                    //mostramos cada linea
+                    System.out.println("lectura = " + lectura);
+                    //avanzamos en la lectura
+                    lectura = entrada.readLine();
+                }
+                entrada.close();
+            } catch (FileNotFoundException e) {
+                e.printStackTrace(System.out);
+            } catch (IOException  e){
+                
+            }
+        }
 }
